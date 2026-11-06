@@ -1,0 +1,27 @@
+# Robots.txt for Janhit Hospital (जनहित हॉस्पिटल)
+# Official Super Speciality Healthcare & Research Centre
+
+User-agent: *
+Allow: /
+Allow: /hi/
+Allow: /en/
+Allow: /about
+Allow: /doctors/
+Allow: /departments/
+Allow: /treatments/
+Allow: /facilities/
+Allow: /patient-corner/
+Allow: /blog/
+Allow: /gallery/
+Allow: /contact
+Allow: /appointment
+
+# Disallow private administrative portals and internal API endpoints
+Disallow: /admin/
+Disallow: /api/
+Disallow: /api/v1/
+
+# Host & Sitemap specification
+Host: https://www.janhithospital.com
+Sitemap: https://www.janhithospital.com/sitemap.xml
+

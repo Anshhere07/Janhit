@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 1. Homepage -->
+  <url>
+    <loc>https://www.janhithospital.com/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/" />
+  </url>
+
+  <!-- 2. About Hospital -->
+  <url>
+    <loc>https://www.janhithospital.com/about</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/about" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/about" />
+  </url>
+
+  <!-- 3. Doctors Directory -->
+  <url>
+    <loc>https://www.janhithospital.com/doctors</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/doctors" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/doctors" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/doctors" />
+  </url>
+
+  <!-- Individual Doctor Profiles -->
+  <url>
+    <loc>https://www.janhithospital.com/doctors/dr-ramesh-sharma</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/doctors/dr-ramesh-sharma" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/doctors/dr-ramesh-sharma" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/doctors/dr-ramesh-sharma" />
+  </url>
+  <url>
+    <loc>https://www.janhithospital.com/doctors/dr-anita-desai</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/doctors/dr-anita-desai" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/doctors/dr-anita-desai" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/doctors/dr-anita-desai" />
+  </url>
+  <url>
+    <loc>https://www.janhithospital.com/doctors/dr-vikram-verma</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/doctors/dr-vikram-verma" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/doctors/dr-vikram-verma" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/doctors/dr-vikram-verma" />
+  </url>
+  <url>
+    <loc>https://www.janhithospital.com/doctors/dr-priya-kapoor</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/doctors/dr-priya-kapoor" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/doctors/dr-priya-kapoor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/doctors/dr-priya-kapoor" />
+  </url>
+
+  <!-- 4. Clinical Departments -->
+  <url>
+    <loc>https://www.janhithospital.com/departments</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/departments" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/departments" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/departments" />
+  </url>
+  <url>
+    <loc>https://www.janhithospital.com/departments/cardiology</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/departments/cardiology" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/departments/cardiology" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/departments/cardiology" />
+  </url>
+  <url>
+    <loc>https://www.janhithospital.com/departments/neurology</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/departments/neurology" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/departments/neurology" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/departments/neurology" />
+  </url>
+  <url>
+    <loc>https://www.janhithospital.com/departments/orthopaedics</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/departments/orthopaedics" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/departments/orthopaedics" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/departments/orthopaedics" />
+  </url>
+  <url>
+    <loc>https://www.janhithospital.com/departments/oncology</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/departments/oncology" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/departments/oncology" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/departments/oncology" />
+  </url>
+
+  <!-- 5. Treatments & Procedures -->
+  <url>
+    <loc>https://www.janhithospital.com/treatments</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/treatments" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/treatments" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/treatments" />
+  </url>
+
+  <!-- 6. Hospital Facilities & Infrastructure -->
+  <url>
+    <loc>https://www.janhithospital.com/facilities</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/facilities" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/facilities" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/facilities" />
+  </url>
+
+  <!-- 7. Appointment Booking -->
+  <url>
+    <loc>https://www.janhithospital.com/appointment</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/appointment" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/appointment" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/appointment" />
+  </url>
+
+  <!-- 8. Patient Corner & FAQs -->
+  <url>
+    <loc>https://www.janhithospital.com/patient-corner</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/patient-corner" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/patient-corner" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/patient-corner" />
+  </url>
+
+  <!-- 9. Health Blog -->
+  <url>
+    <loc>https://www.janhithospital.com/blog</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/blog" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/blog" />
+  </url>
+  <url>
+    <loc>https://www.janhithospital.com/blog/silent-heart-attack-symptoms-prevention</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/blog/silent-heart-attack-symptoms-prevention" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/blog/silent-heart-attack-symptoms-prevention" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/blog/silent-heart-attack-symptoms-prevention" />
+  </url>
+
+  <!-- 10. Visual Media Gallery -->
+  <url>
+    <loc>https://www.janhithospital.com/gallery</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/gallery" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/gallery" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/gallery" />
+  </url>
+
+  <!-- 11. Contact & Campus Directions -->
+  <url>
+    <loc>https://www.janhithospital.com/contact</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/contact" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/contact" />
+  </url>
+</urlset>
+

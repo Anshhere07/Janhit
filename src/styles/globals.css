@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #FFFFFF;
+    --bg-tertiary: #F1F5F9;
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    --border-color: #E2E8F0;
+    
+    --brand-navy: #0F233D;
+    --brand-medical: #0066C7;
+    --brand-teal: #14B196;
+  }
+
+  .dark {
+    --bg-primary: #080E1A;
+    --bg-secondary: #0F1829;
+    --bg-tertiary: #152238;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #8A99AD;
+    --border-color: #1F314F;
+    
+    --brand-navy: #173659;
+    --brand-medical: #36A2FF;
+    --brand-teal: #35CDB1;
+  }
+
+  html {
+    font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Support Devanagari Hindi font rendering */
+  [lang="hi"] body,
+  .font-hindi {
+    font-family: 'Noto Sans Devanagari', 'Inter', -apple-system, sans-serif;
+    line-height: 1.65;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    max-width: 100vw;
+    min-height: 100vh;
+  }
+
+  /* Accessibility: Honor reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Ultra-smooth Glassmorphism header */
+  .glass-header {
+    background-color: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .dark .glass-header {
+    background-color: rgba(8, 14, 26, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Frosted dropdown glass panel with zero harsh borders */
+  .nav-dropdown-glass {
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 16px 40px -10px rgba(15, 35, 61, 0.12), 0 0 0 1px rgba(15, 35, 61, 0.05);
+  }
+
+  .dark .nav-dropdown-glass {
+    background-color: rgba(15, 24, 41, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  /* Accessible focus ring only for keyboard users, never on mouse click */
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-medical-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-medical-400/60 dark:focus-visible:ring-offset-dark-surface;
+  }
+
+  /* Clean scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(15, 35, 61, 0.15);
+    border-radius: 9999px;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(15, 35, 61, 0.3);
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Luxury Glassmorphism Card Surface */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 232, 240, 0.7);
+  }
+
+  .dark .glass-card {
+    background: rgba(15, 24, 41, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(31, 49, 79, 0.8);
+  }
+
+  /* Premium Gradient Text Utilities */
+  .text-gradient-navy {
+    background: linear-gradient(135deg, #0A1728 0%, #173659 50%, #0066C7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dark .text-gradient-navy {
+    background: linear-gradient(135deg, #FFFFFF 0%, #D9E3F1 50%, #7CC2FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-medical {
+    background: linear-gradient(135deg, #0051A1 0%, #0066C7 50%, #14B196 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dark .text-gradient-medical {
+    background: linear-gradient(135deg, #36A2FF 0%, #7CC2FF 50%, #35CDB1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Fluid Section Spacing Token */
+  .section-fluid-y {
+    padding-top: clamp(3.5rem, 6vw, 6rem);
+    padding-bottom: clamp(3.5rem, 6vw, 6rem);
+  }
+
+  /* Fluid Responsive Typography Tokens using CSS clamp() */
+  .fluid-hero-heading {
+    font-size: clamp(2.25rem, 4.5vw + 0.5rem, 4.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .fluid-page-heading {
+    font-size: clamp(1.85rem, 3.5vw + 0.25rem, 3.1rem);
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+  }
+
+  .fluid-section-heading {
+    font-size: clamp(1.6rem, 2.75vw + 0.25rem, 2.5rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+
+  .fluid-card-heading {
+    font-size: clamp(1.125rem, 1.25vw + 0.25rem, 1.4rem);
+    line-height: 1.35;
+  }
+
+  /* Devanagari text-wrap balance and optimal line-height */
+  .hindi-reading {
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+
+  /* Fluid Section Spacing System */
+  .section-fluid-compact {
+    padding-top: clamp(2.5rem, 4vw, 4.5rem);
+    padding-bottom: clamp(2.5rem, 4vw, 4.5rem);
+  }
+
+  .section-fluid-standard {
+    padding-top: clamp(3.5rem, 6vw, 6.5rem);
+    padding-bottom: clamp(3.5rem, 6vw, 6.5rem);
+  }
+
+  .section-fluid-hero {
+    padding-top: clamp(5rem, 8vw, 8.5rem);
+    padding-bottom: clamp(3.5rem, 6vw, 6.5rem);
+  }
+
+  /* Ambient Mesh Subtle Backgrounds */
+  .bg-ambient-mesh {
+    background-image: radial-gradient(at 10% 20%, rgba(0, 102, 199, 0.05) 0px, transparent 40%),
+                      radial-gradient(at 90% 10%, rgba(20, 177, 150, 0.06) 0px, transparent 40%),
+                      radial-gradient(at 50% 80%, rgba(15, 35, 61, 0.03) 0px, transparent 50%);
+  }
+
+  .dark .bg-ambient-mesh {
+    background-image: radial-gradient(at 10% 20%, rgba(0, 102, 199, 0.12) 0px, transparent 40%),
+                      radial-gradient(at 90% 10%, rgba(20, 177, 150, 0.1) 0px, transparent 40%),
+                      radial-gradient(at 50% 80%, rgba(56, 162, 255, 0.05) 0px, transparent 50%);
+  }
+}

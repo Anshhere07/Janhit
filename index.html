@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth font-hindi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/hospital-cross.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0F233D" />
+    <meta name="description" content="जनहित हॉस्पिटल - सुपर स्पेशलिटी स्वास्थ्य एवं अनुसंधान केंद्र | विश्वस्तरीय चिकित्सा सेवा, अनुभवी डॉक्टर्स, 24/7 इमरजेंसी व आधुनिक डायग्नोस्टिक्स।" />
+    
+    <!-- Technical Security Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- Open Graph Default Metadata -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="जनहित हॉस्पिटल (Janhit Hospital)" />
+    <meta property="og:title" content="जनहित हॉस्पिटल | सुपर स्पेशलिटी स्वास्थ्य एवं अनुसंधान केंद्र" />
+    <meta property="og:description" content="24/7 आपातकालीन सेवा, आधुनिक कार्डियक कैथ लैब, रोबोटिक जोड़ प्रत्यारोपण व एनएबीएच-प्रमाणित विशेषज्ञ चिकित्सा सेवाएं।" />
+    <meta property="og:url" content="https://www.janhithospital.com/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=1200&q=80" />
+    <meta property="og:locale" content="hi_IN" />
+    <meta property="og:locale:alternate" content="en_IN" />
+
+    <!-- Twitter Card Default Metadata -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="जनहित हॉस्पिटल | सुपर स्पेशलिटी स्वास्थ्य एवं अनुसंधान केंद्र" />
+    <meta name="twitter:description" content="24/7 आपातकालीन सेवा, अनुभवी विशेषज्ञ डॉक्टर्स एवं आधुनिक चिकित्सा तकनीक।" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=1200&q=80" />
+
+    <!-- Canonical & Language Alternate Tags -->
+    <link rel="canonical" href="https://www.janhithospital.com/" />
+    <link rel="alternate" hreflang="hi-IN" href="https://www.janhithospital.com/hi/" />
+    <link rel="alternate" hreflang="en-IN" href="https://www.janhithospital.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.janhithospital.com/" />
+
+    <!-- Performance Preconnections: Google Fonts & Image CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <!-- Critical LCP Hero Image Preload -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=80"
+      fetchpriority="high"
+    />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" 
+      rel="stylesheet" 
+    />
+    
+    <!-- Prevent theme and font flash on first load -->
+    <script>
+      (function() {
+        try {
+          const savedTheme = localStorage.getItem('janhit_theme_preference');
+          if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches && savedTheme !== 'light')) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+
+          const savedLang = localStorage.getItem('janhit_language_preference');
+          const activeLang = savedLang === 'en' ? 'en' : 'hi';
+          document.documentElement.lang = activeLang;
+          if (activeLang === 'hi') {
+            document.documentElement.classList.add('font-hindi');
+          } else {
+            document.documentElement.classList.remove('font-hindi');
+          }
+        } catch (e) {
+          // ignore localStorage access issues in restricted modes
+        }
+      })();
+    </script>
+    
+    <title>जनहित हॉस्पिटल | सुपर स्पेशलिटी स्वास्थ्य एवं अनुसंधान केंद्र</title>
+  </head>
+  <body class="bg-[#F8FAFC] text-slate-900 dark:bg-dark-bg dark:text-slate-100 antialiased font-hindi transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

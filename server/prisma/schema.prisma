@@ -1,0 +1,412 @@
+// Janhit Hospital (जनहित हॉस्पिटल) Prisma Database Schema
+// Database Engine: PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// =========================================================================
+// 1. ROLES, USERS & PERMISSIONS
+// =========================================================================
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  DOCTOR
+  RECEPTIONIST
+  CONTENT_EDITOR
+}
+
+model AdminUser {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(ADMIN)
+  phone        String?
+  departmentId String?
+  isActive     Boolean   @default(true)
+  lastLogin    DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  auditLogs    AuditLog[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  userEmail String
+  action    String   // e.g. "CREATE_DOCTOR", "CONFIRM_APPOINTMENT", "UPDATE_SETTINGS"
+  entity    String   // e.g. "Appointment", "Doctor", "Blog"
+  entityId  String?
+  details   Json?
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  user      AdminUser? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userEmail])
+  @@index([action])
+  @@index([entity])
+  @@index([createdAt])
+}
+
+// =========================================================================
+// 2. CLINICAL DEPARTMENTS & TREATMENTS
+// =========================================================================
+
+model Department {
+  id                 String   @id @default(uuid())
+  slug               String   @unique
+  nameEn             String
+  nameHi             String
+  shortIntroEn       String
+  shortIntroHi       String
+  overviewEn         String   @db.Text
+  overviewHi         String   @db.Text
+  icon               String   @default("HeartPulse")
+  bannerImage        String
+  bedCapacity        Int      @default(0)
+  opdSchedule        String   @default("08:00 AM - 08:00 PM")
+  emergencyAvailable Boolean  @default(true)
+  servicesEn         Json     // Array of strings
+  servicesHi         Json     // Array of strings
+  conditionsEn       Json     // Array of strings
+  conditionsHi       Json     // Array of strings
+  orderIndex         Int      @default(0)
+  isActive           Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  doctors            Doctor[]
+  appointments       Appointment[]
+  treatments         Treatment[]
+
+  @@index([slug])
+  @@index([isActive])
+}
+
+model Treatment {
+  id             String     @id @default(uuid())
+  slug           String     @unique
+  departmentId   String
+  nameEn         String
+  nameHi         String
+  overviewEn     String     @db.Text
+  overviewHi     String     @db.Text
+  indicationsEn  Json       // Array of symptoms / indications
+  indicationsHi  Json
+  procedureEn    String     @db.Text
+  procedureHi    String     @db.Text
+  recoveryEn     String     @db.Text
+  recoveryHi     String     @db.Text
+  duration       String     @default("1-2 hours")
+  hospitalStay   String     @default("Same-day discharge / 1-2 days")
+  isActive       Boolean    @default(true)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  department     Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@index([slug])
+  @@index([departmentId])
+}
+
+// =========================================================================
+// 3. DOCTORS & CONSULTATION SLOTS
+// =========================================================================
+
+model Doctor {
+  id                   String            @id @default(uuid())
+  slug                 String            @unique
+  departmentId         String
+  nameEn               String
+  nameHi               String
+  qualifications       String
+  specializationEn     String
+  specializationHi     String
+  experienceYears      Int               @default(5)
+  consultationFee      Int               @default(500)
+  photoUrl             String
+  bioEn                String            @db.Text
+  bioHi                String            @db.Text
+  expertiseEn          Json              // Array of strings
+  expertiseHi          Json              // Array of strings
+  opdDays              Json              // Array of strings e.g. ["Mon", "Wed", "Fri"]
+  opdTime              String            @default("09:00 AM - 02:00 PM")
+  roomNumber           String            @default("OPD-101")
+  isHeadOfDepartment   Boolean           @default(false)
+  isAvailableForBooking Boolean          @default(true)
+  orderIndex           Int               @default(0)
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+
+  department           Department        @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  appointments         Appointment[]
+  slots                AppointmentSlot[]
+
+  @@index([slug])
+  @@index([departmentId])
+  @@index([isAvailableForBooking])
+}
+
+model AppointmentSlot {
+  id              String   @id @default(uuid())
+  doctorId        String
+  date            String   // YYYY-MM-DD
+  timeSlot        String   // "10:00 AM"
+  maxBookings     Int      @default(1)
+  currentBookings Int      @default(0)
+  isBlocked       Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  doctor          Doctor   @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@unique([doctorId, date, timeSlot])
+  @@index([doctorId, date])
+}
+
+// =========================================================================
+// 4. APPOINTMENT BOOKINGS
+// =========================================================================
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  RESCHEDULED
+  COMPLETED
+  CANCELLED
+}
+
+model Appointment {
+  id                String            @id @default(uuid())
+  referenceNumber   String            @unique // e.g. "APT-2026-9812"
+  patientName       String
+  mobileNumber      String
+  email             String?
+  patientAge        Int?
+  patientGender     String?
+  departmentId      String
+  doctorId          String
+  appointmentDate   String            // YYYY-MM-DD
+  preferredTime     String            // "10:30 AM"
+  consultationType  String            @default("in-person") // in-person or tele-consult
+  reason            String?           @db.Text
+  status            AppointmentStatus @default(PENDING)
+  adminNotes        String?           @db.Text
+  confirmedAt       DateTime?
+  cancelledReason   String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  department        Department        @relation(fields: [departmentId], references: [id], onDelete: Restrict)
+  doctor            Doctor            @relation(fields: [doctorId], references: [id], onDelete: Restrict)
+
+  @@index([referenceNumber])
+  @@index([mobileNumber])
+  @@index([appointmentDate])
+  @@index([status])
+  @@index([doctorId])
+  @@index([departmentId])
+}
+
+// =========================================================================
+// 5. HOSPITAL INFRASTRUCTURE & FACILITIES
+// =========================================================================
+
+model Facility {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  titleEn     String
+  titleHi     String
+  category    String   // critical-care, surgery, diagnostics, support, inpatient
+  overviewEn  String   @db.Text
+  overviewHi  String   @db.Text
+  featuresEn  Json     // Array of strings
+  featuresHi  Json     // Array of strings
+  imageUrl    String
+  isEmergency Boolean  @default(false)
+  orderIndex  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+  @@index([category])
+}
+
+// =========================================================================
+// 6. HEALTH BLOG & CMS
+// =========================================================================
+
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model BlogCategory {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  nameEn      String
+  nameHi      String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  blogs       Blog[]
+
+  @@index([slug])
+}
+
+model Blog {
+  id               String       @id @default(uuid())
+  slug             String       @unique
+  titleEn          String
+  titleHi          String
+  excerptEn        String       @db.Text
+  excerptHi        String       @db.Text
+  contentEn        String       @db.Text
+  contentHi        String       @db.Text
+  featuredImage    String
+  author           String       @default("Janhit Editorial Board")
+  authorRole       String       @default("Medical Communication Team")
+  reviewerDoctorId String?
+  categorySlug     String
+  readTimeEn       String       @default("5 min read")
+  readTimeHi       String       @default("5 मिनट")
+  publishedDate    DateTime     @default(now())
+  status           BlogStatus   @default(PUBLISHED)
+  metaTitle        String?
+  metaDescription  String?      @db.Text
+  tags             Json?        // Array of strings
+  viewCount        Int          @default(0)
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  category         BlogCategory @relation(fields: [categorySlug], references: [slug], onDelete: Restrict)
+
+  @@index([slug])
+  @@index([status])
+  @@index([categorySlug])
+  @@index([publishedDate])
+}
+
+// =========================================================================
+// 7. GALLERY (PHOTOS & VIDEOS)
+// =========================================================================
+
+model GalleryItem {
+  id            String   @id @default(uuid())
+  titleEn       String
+  titleHi       String
+  descriptionEn String?  @db.Text
+  descriptionHi String?  @db.Text
+  category      String   // building, reception, rooms, icu-nicu, ot, equipment, staff, events, camps
+  imageUrl      String
+  thumbnailUrl  String?
+  mediaType     String   @default("image") // image or video
+  videoUrl      String?
+  duration      String?
+  isFeatured    Boolean  @default(false)
+  orderIndex    Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([category])
+  @@index([mediaType])
+  @@index([isFeatured])
+}
+
+// =========================================================================
+// 8. PATIENT TESTIMONIALS & CONTACT ENQUIRIES
+// =========================================================================
+
+model Testimonial {
+  id           String   @id @default(uuid())
+  patientName  String
+  locationEn   String
+  locationHi   String
+  rating       Int      @default(5)
+  treatmentEn  String
+  treatmentHi  String
+  doctorId     String?
+  departmentId String?
+  storyEn      String   @db.Text
+  storyHi      String   @db.Text
+  patientPhoto String?
+  reviewDate   String
+  isVerified   Boolean  @default(true)
+  isApproved   Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([isApproved])
+  @@index([rating])
+}
+
+enum EnquiryStatus {
+  NEW
+  IN_PROGRESS
+  CONTACTED
+  RESOLVED
+  CLOSED
+}
+
+model ContactEnquiry {
+  id              String        @id @default(uuid())
+  referenceNumber String        @unique // e.g. "MSG-2026-9821"
+  fullName        String
+  mobileNumber    String
+  email           String?
+  subject         String
+  message         String        @db.Text
+  status          EnquiryStatus @default(NEW)
+  assignedTo      String?
+  staffNotes      String?       @db.Text
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([referenceNumber])
+  @@index([status])
+  @@index([mobileNumber])
+  @@index([createdAt])
+}
+
+// =========================================================================
+// 9. WEBSITE SETTINGS & GLOBAL CONFIGURATION
+// =========================================================================
+
+model WebsiteSetting {
+  id               String   @id @default("global")
+  hospitalNameEn   String   @default("Janhit Hospital")
+  hospitalNameHi   String   @default("जनहित हॉस्पिटल")
+  taglineEn        String   @default("Super Speciality Healthcare & Research Centre")
+  taglineHi        String   @default("सुपर स्पेशलिटी हेल्थकेयर एवं रिसर्च सेन्टर")
+  addressEn        String   @default("Sector 14, Institutional Area, New Delhi - 110001, India")
+  addressHi        String   @default("सेक्टर 14, इंस्टीट्यूशनल एरिया, नई दिल्ली - 110001, भारत")
+  emergencyPhone   String   @default("1800-123-9999")
+  generalPhone     String   @default("+91-11-2345-6789")
+  ambulancePhone   String   @default("+91-11-2345-9999")
+  whatsappNumber   String   @default("+919876543210")
+  email            String   @default("care@janhithospital.com")
+  opdHoursEn       String   @default("Mon - Sat: 08:00 AM - 08:00 PM")
+  opdHoursHi       String   @default("सोमवार - शनिवार: सुबह 08:00 से रात 08:00 बजे तक")
+  visitingHoursEn  String   @default("05:00 PM - 07:00 PM Daily")
+  visitingHoursHi  String   @default("शाम 05:00 से 07:00 बजे तक प्रतिदिन")
+  socialLinks      Json
+  metaTitle        String   @default("Janhit Hospital | Super Speciality Healthcare")
+  metaDescription  String   @db.Text
+  maintenanceMode  Boolean  @default(false)
+  updatedAt        DateTime @updatedAt
+}
+
