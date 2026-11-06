@@ -186,7 +186,7 @@ export const ContactPage: React.FC = () => {
             {/* 4. Google Maps Directions */}
             <motion.div variants={fadeInUp}>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Janhit+Hospital+Sector+14+New+Delhi"
+                href="https://www.google.com/maps/search/?api=1&query=Garhiya+Rangeen+Uttar+Pradesh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-white/[0.08] text-navy-950 dark:text-white shadow-sm hover:border-accent-500 hover:-translate-y-1 transition-all flex items-center gap-3 group h-full"
@@ -243,15 +243,15 @@ export const ContactPage: React.FC = () => {
 
               <div className="p-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200/70 dark:border-white/[0.06] text-xs text-slate-500 dark:text-slate-400">
                 <span className="font-semibold text-navy-950 dark:text-white">
-                  {isHindi ? 'नजदीकी मेट्रो स्टेशन:' : 'Nearest Landmark:'}
+                  {isHindi ? 'स्थान / लैंडमार्क:' : 'Location / Landmark:'}
                 </span>{' '}
                 {isHindi
-                  ? 'सेंट्रल मेट्रो स्टेशन (गेट नंबर 3 से 200 मीटर दूरी पर)'
-                  : 'Central Metro Station (200m from Gate No. 3)'}
+                  ? 'गढ़िया रंगीन, उत्तर प्रदेश 242303'
+                  : 'Garhiya Rangeen, Uttar Pradesh 242303'}
               </div>
 
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Janhit+Hospital+Sector+14+New+Delhi"
+                href="https://www.google.com/maps/search/?api=1&query=Garhiya+Rangeen+Uttar+Pradesh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-medical-600 hover:bg-medical-700 text-white font-bold text-xs transition-colors shadow-sm"
@@ -541,12 +541,12 @@ export const ContactPage: React.FC = () => {
                     <span>{isHindi ? 'अस्पताल नक्शा एवं लाइव लोकेशन' : 'Campus Location & Live Map'}</span>
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    Sector 14, Institutional Area, New Delhi
+                    Garhiya Rangeen, Uttar Pradesh - 242303
                   </p>
                 </div>
 
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Janhit+Hospital+Sector+14+New+Delhi"
+                  href="https://www.google.com/maps/search/?api=1&query=Garhiya+Rangeen+Uttar+Pradesh"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-bold text-medical-600 dark:text-medical-400 hover:underline flex items-center gap-1"
@@ -559,14 +559,14 @@ export const ContactPage: React.FC = () => {
               {/* Map Iframe */}
               <div className="relative w-full h-80 sm:h-96 bg-slate-100 dark:bg-navy-950">
                 <iframe
-                  title="Janhit Hospital Campus Location Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112061.09262729792!2d77.1000!3d28.6139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+                  title="Janhit Hospital Campus Location Map - Garhiya Rangeen"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14100.943470704877!2d79.50467521815357!3d27.925413526118064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399fe70a70a66977%3A0xbb2791d5b14448ab!2sGarhiya%20Rangeen%2C%20Uttar%20Pradesh%20242303!5e0!3m2!1sen!2sin!4v1793949781123!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerPolicy="strict-origin-when-cross-origin"
                   className="w-full h-full filter contrast-100 opacity-90 hover:opacity-100 transition-opacity"
                 />
               </div>

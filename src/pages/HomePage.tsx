@@ -1081,15 +1081,15 @@ export const HomePage: React.FC = () => {
               <div className="rounded-3xl overflow-hidden shadow-card border border-slate-200 dark:border-dark-border h-[380px] sm:h-[420px] relative bg-slate-200 dark:bg-dark-surface">
                 {/* Styled Map Embed */}
                 <iframe
-                  title="Janhit Hospital Campus Location Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112061.08272922718!2d77.1009!3d28.6139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b715389640!2sDelhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  title="Janhit Hospital Campus Location Map - Garhiya Rangeen"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14100.943470704877!2d79.50467521815357!3d27.925413526118064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399fe70a70a66977%3A0xbb2791d5b14448ab!2sGarhiya%20Rangeen%2C%20Uttar%20Pradesh%20242303!5e0!3m2!1sen!2sin!4v1793949781123!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
-                  allowFullScreen={false}
+                  allowFullScreen={true}
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full grayscale-[20%] dark:invert-[90%] dark:hue-rotate-180"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  className="w-full h-full grayscale-[10%] dark:invert-[90%] dark:hue-rotate-180"
                 />
 
                 {/* Floating Campus Badge over map */}
