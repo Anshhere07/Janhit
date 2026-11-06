@@ -34,8 +34,14 @@ async function startServer() {
   process.on('SIGTERM', () => shutdown('SIGTERM'));
 }
 
-startServer().catch((error) => {
-  console.error('Fatal error during server startup:', error);
-  process.exit(1);
-});
+// Only start the standalone HTTP listener when running locally or in standalone container
+// On Vercel, the exported Express app is managed directly by Vercel Fluid serverless compute
+if (!process.env.VERCEL) {
+  startServer().catch((error) => {
+    console.error('Fatal error during server startup:', error);
+    process.exit(1);
+  });
+}
+
+export default app;
 

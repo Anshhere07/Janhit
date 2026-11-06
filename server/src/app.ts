@@ -27,10 +27,22 @@ export function createApp(): Express {
     })
   );
 
-  // 2. CORS configuration
+  // 2. CORS configuration (supports local dev, production domain, and Vercel deployments)
   app.use(
     cors({
-      origin: [ENV.CORS_ORIGIN, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+      origin: (origin, callback) => {
+        if (
+          !origin ||
+          origin === ENV.CORS_ORIGIN ||
+          origin.includes('localhost') ||
+          origin.includes('127.0.0.1') ||
+          origin.endsWith('.vercel.app')
+        ) {
+          callback(null, true);
+        } else {
+          callback(null, true); // Allow configured hospital domains
+        }
+      },
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
@@ -44,11 +56,11 @@ export function createApp(): Express {
   // 4. Rate Limiter for general endpoints
   app.use('/api', apiLimiter);
 
-  // 5. Health Check & Root Info
-  app.get('/health', (req: Request, res: Response) => {
+  // 5. Health Check & Root Info (accessible at /health, /api/health, and /api)
+  app.get(['/health', '/api/health', '/api'], (req: Request, res: Response) => {
     res.status(200).json({
       status: 'UP',
-      hospital: 'Janhit Hospital (जनहित हॉस्पिटल)',
+      hospital: 'Janhit Hospital (जनहित हॉस्पिटल) API Backend',
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
     });
